@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="Centilia.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Centilia"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#FFEEEEEE" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="columnControls" Width="272" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="68" />
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel x:Name="Controls" Orientation="Horizontal" Grid.Column="0">
+                <AppBarButton x:Name="button_GoBack" Icon="Back" Label="Zurück" IsEnabled="False" Click="Button_Back_Click" Margin="0,2,0,-2" /> 
+                <AppBarButton x:Name="button_GoForward" Icon="Forward" Label="Vor" IsEnabled="False" Click="Button_Forward_Click" />
+                <AppBarButton Icon="Refresh" Label="Akualisieren" Click="Button_Refresh_Click" />
+                <AppBarButton Icon="Home" Label="Startseite" Click="Button_Home_Click" />
+            </StackPanel>
+
+            <TextBox x:Name="txtAddressBar" Grid.Column="1" Text="blank" IsReadOnly="True" Margin="10" TextWrapping="Wrap" VerticalAlignment="Center" />
+
+            <AppBarButton Grid.Column="2" Icon="More">
+                <AppBarButton.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Icon="Setting" Text="Einstellungen" Click="MenuFlyoutItem_Click"/>
+                        <MenuFlyoutSeparator />
+                        <MenuFlyoutItem Text="Info" Click="Button_Info_Clicked"/>
+                    </MenuFlyout>
+                </AppBarButton.Flyout>
+
+
+            </AppBarButton>
+        </Grid>
+
+        <WebView x:Name="webFrame" Grid.Row="1" Source="https://duckduckgo.com/" />
+
+    </Grid>
+</Page>
